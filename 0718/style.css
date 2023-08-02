@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&family=Noto+Serif+KR:wght@900&display=swap');
+
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Noto Serif KR', serif;
+}
+
+.title{
+    text-align: center;
+    color: rgb(187, 0, 250);
+}
+
+form{
+    width:500px;
+    /* 가운데 정렬 */
+    margin:0px auto;
+    border:1px solid gray;
+    padding:20px;
+    border-radius: 20px;
+}
+
+input, select {
+    padding: 5px 10px;
+}
+
+table {
+    width: 500px;
+    margin: 0px auto;
+    /* 아래 볼더 콜래이프 하면 충돌이 해결됨 */
+    border-collapse: collapse;
+}
+
+td {
+    border-bottom: 1px dotted gray;
+    padding: 20px;
+}
+
+#tbl .row:hover {
+    background: gray;
+    color: white;
+    cursor: pointer;
+}

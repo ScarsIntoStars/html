@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여섯번째 예제</title>
+
+    <style>
+        input,
+        select {
+            border: 3px solid rgb(4, 255, 0);
+            padding: 5px 20px;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 입력태그 -->
+    <form>
+        <!-- 인풋은 입력상자, 타입텍스트는 생략가능, 슬래시도 생략가능 -->
+        <input type="text" placeholder="이름입력" value="홍길동" size="10" maxlength="6" />
+        <hr>
+        <input type="password" placeholder="비밀번호">
+        <hr>
+        <select>
+            <!-- value값은 저장할 때 들어가는 값 -->
+            <option value="01">컴정</option>
+            <option value="02">전자</option>
+            <option value="03">통신</option>
+        </select>
+        <hr>
+        <!-- 레디오박스 : 하나만 선택 -->
+        <input type="radio" name="gender" value="M">남 &nbsp; &nbsp; &nbsp; <input type="radio" name="gender" value="F">여
+        <hr>
+        <input type="checkbox">영화감상
+        <input type="checkbox">코딩공부
+        <input type="checkbox">전자오락
+        <hr>
+        <input type="submit" value="등록">
+        <input type="reset" value="취소">
+        <input type="button" value="목록으로">
+        <!-- 아래 버튼은 submit과 같음 -->
+        <button>버튼</button> 
+    </form>
+</body>
+
+</html>

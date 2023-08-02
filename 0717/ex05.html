@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다섯번 째 예제</title>
+    <style>
+        #page {
+            width: 960px;
+            margin: 0px auto;
+            /* 페이지를 가운데 정렬 */
+            background: lightpink;
+            padding: 20px;
+        }
+
+
+        #top,
+        #bottom {
+            background: yellow;
+            /* margin: 20px 20px; */
+        }
+
+        #middle {
+            overflow: hidden;
+        }
+
+        #middle #left {
+            width: 200px;
+            background: red;
+            color: white;
+            float: left;
+        }
+
+        #middle #center {
+            width: 500px;
+            background: blue;
+            color: white;
+            float: left;
+            margin-left: 20px;
+        }
+
+        #middle #right {
+            width: 200px;
+            background: green;
+            color: white;
+            float: left;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page">
+        <div id="top">
+            <p><b>top...</b>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                been
+                the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                and
+                scrambled it to make a type specimen book.</p>
+        </div>
+        <div id="middle">
+            <div id="left">
+                <p><b>center...</b>It is a long established fact that a reader will be distracted by the readable
+                    content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                    more-or-less normal distribution of letters, as opposed to using 'Content here, content here',
+                    making it look like readable English.</p>
+            </div>
+            <div id="center">
+                <p><b>left...</b>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                    has been
+                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+                    type and
+                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap into
+                    electronic typesetting, remaining essentially unchanged</p>
+            </div>
+            <div id="right">
+                <p><b>right...</b>There are many variations of passages of Lorem Ipsum available, but the majority have
+                    suffered alteration in some form, by injected humour, or randomised words which don't look even
+                    slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there
+                    isn't anything embarrassing hidden in the middle of text.</p>
+            </div>
+        </div>
+        <div id="bottom"><b>right...</b>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots
+            in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a
+            Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words,
+            consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature,
+            discovered the undoubtable source.</p>
+        </div>
+    </div>
+</body>
+
+</html>

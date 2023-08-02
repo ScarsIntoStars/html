@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style.css" />
+    <title>상품ㅇㅇ관리</title>
+    <style>
+        #div_product .name {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row my-5 justify-content-center">
+        <div class="col-md-6">
+            <h1 class="text-center">상품목록</h1>
+            <div id="div_product"></div>
+        </div>
+    </div>
+    <div class="row my-5 justify-content-center">
+        <div class="col-md-6 ">
+            <h1 class="text-center">매출목록</h1>
+        </div>
+    </div>
+    <script id="temp_product" type="text/x-handlebars-template">
+       <!-- 아래 테이블 스트리프드가 부트스트랩에서 가져온 것 -->
+    <table class="table table-striped">
+
+        {{#each .}}
+        <tr>
+            <td>{{code}}</td>
+            <td class="name">{{name}}</td>
+            <td>{{price}}</td>
+            <!-- class="btn btn-danger 이것도 부트스트랩에서 가져온 것 -->
+            <td><button class="view btn btn-danger" index="{{@index}}">조회</button></td>
+            <td><button class="view2 btn btn-success">매출정보</button></td>
+        </tr>
+        <!-- 상품조회 모달창 Modal -->
+        <!-- 모달창 반복하라고 이취문 안에 넣어줌, 인덱스 어트리뷰트 주고, 아이디에 인덱스를 붙임 -->
+        <div class="modal fade" id="modal_product{{@index}}" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">모달모달</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3>{{code}}:{{name}}:{{price}}</h3>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">모달 끄기</button>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /상품조회 모달창 Modal -->
+        {{/each}}
+    </table>
+
+
+
+    </script>
+
+</body>
+<script>
+    const products = [
+        { code: '100', name: '냉장고', price: 3000000 },
+        { code: '101', name: '세탁기', price: 2500000 },
+        { code: '102', name: '스타일러', price: 1500000 },
+];
+ const sales = [
+     { scode:'1', amount:300000, date:"2023-07-15" },
+     { scode:'2', amount:400000, date:"2023-07-15" },
+      { scode:'3', amount:200000, date:"2023-07-15" },
+  ];
+
+    const temp_sales = Handlebars.compile(
+  <table class="table">
+    <thead>
+      <tr>
+        <th>상품코드</th>
+        <th>판매금액</th>
+        <th>판매일자</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each .}}
+      <tr>
+        <td>{{productCode}}</td>
+        <td>{{amount}}</td>
+        <td>{{date}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+);
+const html_sales = temp_sales(sales);
+
+const div_sales = document.createElement("div");
+div_sales.id = "div_sales";
+div_sales.innerHTML = `
+  <div class="row my-5 justify-content-center">
+    <div class="col-md-6 ">
+      <h1 class="text-center">매출목록</h1>
+    </div>
+  </div>
+  <div class="row my-5 justify-content-center">
+    <div class="col-md-6 ">
+      ${html_sales}
+    </div>
+  </div>
+`;
+
+const div_product = document.getElementById("div_product");
+div_product.insertAdjacentElement('afterend', div_sales);
+
+    // 위의 작업 후 아래 컴파일 해주기.
+    // 상품목록 매출목록 code name price 까지만
+    const temp_product = Handlebars.compile($("#temp_product").html());
+    const html_product = temp_product(products);
+    $("#div_product").html(html_product);
+
+
+    // 조회버튼을 눌렀을 때
+    $("#div_product").on("click", "tr td .view", function () {
+        //아이디가 div_prod인 것 안의 tr안의 td안에 이름이 view인 버튼을 클릭했을 때 function의 값을 실행한다
+        const index = $(this).attr("index");
+        $("#modal_product" + index).modal('show');
+        // 모달이 나타나는 것은 쇼
+        // 모달이 안 나타나는 것은 하이드
+
+    });
+
+
+    // 매출리스트버튼 눌렀을 때
+    $("#div_product").on("click", "tr td view2", function () {
+        const index = $(this).attr("index");
+        $("#modal_product" + index).modal('show');
+    })
+
+</script>
+
+</html>

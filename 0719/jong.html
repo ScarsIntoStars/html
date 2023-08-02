@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+    <title>자습ing</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+    <div>
+        <h1>[ 캠핑장 테이블 ]</h1>
+        <div id="div_camp"></div>
+    </div>
+    <script id="temp_campTemp" type="text/x-handlebars-template">
+
+        {{#each .}}
+<tr>
+    <td>{{campNo}}</td>
+    <td>{{campName}}</td>
+    <td>{{campPhone}}</td>
+    <td><button>자세히 보기</button></td>
+</tr>
+{{/each}}
+
+</script>
+
+</body>
+<script>
+    const campTable = [
+        { campNo: '100', campName: '상수리캠핑장', campPhone: '010-0101-0101' },
+        { campNo: '101', campName: '도토리캠핑장', campPhone: '011-020-0202' },
+        { campNo: '102', campName: '다람쥐캠핑장', campPhone: '019-030-0303' }
+
+    ];
+
+    const temp_campTemp = Handlebars.compile($("#temp_campTemp").html());
+    const html_campTemp = temp_campTemp(campTable);
+    $("#div_camp").html(html_campTemp);
+
+</script>
+
+</html>

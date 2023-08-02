@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지검색</title>
+    <!-- jquery가 있어야 제이작 쓸 수 있음 -->
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <!-- 나보다 하나 위 폴더로 올라가서 css를 사용함 -->
+    <!-- <link rel="stylesheet" href="../0720/style.css" /> -->
+    <!-- 폴더 밖 html에 있는 css를 사용함 -->
+    <link rel="stylesheet" href="../style.css" />
+</head>
+<div class="row">
+    <div class="col">
+        <h1 class="text-center">[ Image_Search_Tool ]</h1>
+    </div>
+</div>
+<body>
+    
+</body>
+<script id="Image_Search_Tool" type="text/x-handlebars-template">
+    {{#each}}
+    <div class="col">
+        <div class="card">
+            <img src="{{thumbnail_url}}">
+        </div>
+    </div>
+    {{/each}}
+</script>
+
+<script>
+    getList();
+
+
+    function getList(){
+        $.ajax({
+            type: "get",
+            dataType: "json",
+            url: "https://dapi.kakao.com/v2/search/image",
+            headers: { "Authorization": "KakaoAK f7bde974691ee613fd76f96b3b6d7aee" },
+            data: { query: "맹구", size: 12, page: 1 },
+            success:function(data){
+                console.log(data);
+                const temp = Handlebars.compile($("#temp_image").html());
+                const html = temp(data);
+
+            }
+        });
+
+    }
+
+
+
+</script>
+</html>

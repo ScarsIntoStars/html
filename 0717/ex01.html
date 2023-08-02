@@ -1,0 +1,84 @@
+<!-- html은 출력을 태그로 함 -->
+<html>
+
+<head>
+    <title>
+        첫번째 예제입니다.
+        <!-- 타이틀에 쓴 것은 브라우저의 탭 제목으로 나타난다 -->
+    </title>
+    <style>
+        h1 {
+            color: green;
+        }
+
+        a {
+            /* 폰트 사이즈를 2배로 크게 (상대크기)*/
+
+            /* font-size: 2rem; */
+
+            /* 30픽셀만 크게 */
+            font-size: 30px;
+        }
+    </style>
+    <script>
+        // 스크립트 안에서는 java문 사용가능
+
+
+        //변하지 않는 값 컨스트, 변하는 값 렛
+        let sum = 0;
+        for (let i = 0; i <= 100; i++) {
+
+            sum += i;
+        }
+        console.log('1~100까지의 합=', sum);
+    </script>
+</head>
+
+<body>
+    <h1>안녕하세요!</h1>
+    <h2>안녕하세요!</h2>
+    <h3>안녕하세요!</h3>
+    <h4>안녕하세요!</h4>
+    <h5>안녕하세요!</h5>
+    <h6>안녕하세요!</h6>
+
+
+    <h1>What is Lorem Ipsum?</h1>
+    <!-- 문단출력은 p -->
+    <p id="first"><b><i>Lorem Ipsum </i></b> is simply dummy<del>text of the printing and typesetting industry. </del>Lorem Ipsum
+        has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+        and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+        electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+        PageMaker including versions of Lorem Ipsum.</p>
+
+    <!-- <b> 볼드 (두껍게)</b> -->
+    <!-- <i> 기울어짐 </i> -->
+    <!-- <del>< 삭제선 /del> -->
+
+
+    <h1>Why do we use it?
+        <br>
+        <!-- br은 한 칸 띄우기 -->
+
+        <!-- hr은 수평선 -->
+        <hr>
+    </h1>
+
+    <p>t is a long established fact that a reader will be distracted by the readable content of a page when looking at
+        its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
+        opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing
+        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum'
+        will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by
+        accident, sometimes on purpose (injected humour and the like).</p>
+
+    <!-- 하이퍼링크 -->
+    <a href="http://naver.com">네이버</a>
+    <a href="http://google.com">구글</a>
+
+    <a href="ex03.html">연습3</a>
+    <a href="#first">문서의 처음</a>
+
+</body>
+
+</html>

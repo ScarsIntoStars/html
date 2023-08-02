@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세번째 예제</title>
+    <style>
+#div1{
+    background-color: green;
+}
+
+/* id가 div2이거나 div3이면 바꿔줘라 */
+#div2,  #div3{
+    background-color: yellow;
+}
+
+.diva {
+    padding: 10px;
+    margin: 10px;
+}
+
+#div3 span{
+    font-size: 3rem;
+}
+
+    </style>
+</head>
+<body>
+    <!-- a태그는 href가 짝꿍 -->
+    <!-- img는 scr이 짝꿍 -->
+
+    <!-- 이미지를 출력하는 태그 -->
+    <img src="OB.jpg">
+    <img src="OB.jpg" width="100">
+    <!-- 이미지의 공간만 만들어주는 더미사이트 -->
+    <img src="http://via.placeholder.com/960x150">
+
+    <!-- 영역을 설정하는 태그 -->
+    <div id="div1" class="diva">
+        <img src="OB.jpg" width="450">
+        <img src="OB.jpg" width="450">
+    </div>
+
+    <div id="div2" class="diva">
+        <img src="OB.jpg" width="600">
+        <img src="OB.jpg" width="600">
+    </div>
+    <div id="div3" class="diva">
+        <!-- 옆으로 출력됨 -->
+        <span>안녕하세요!</span>
+        <span>반갑습니다.</span>
+
+    </div>
+</body>
+</html>

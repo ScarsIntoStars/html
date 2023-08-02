@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일곱번 째 예제</title>
+    <!-- 제이쿼리 -->
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+
+<body>
+    <button onclick="sum();">1~100까지의 합계</button>
+    <h1>1~100까지 결과 : <span id="sum">0</span></h1>
+    <hr>
+    <button id="btnsum">Jquery를 이용한 1~100까지의 합계</button>
+</body>
+
+
+<!-- css는 스타일, 자바스크랩스틑 스크립트 -->
+<script>
+    // 제이쿼리를 이용할 땐 $가 붙음
+    // id가 btnsum인 버튼을 눌렀을 때 function을 실행
+    $("#btnsum").on("click", function () {
+        // sum();
+        // $("#sum").html(5050);
+        let sum = 0;
+        for (let i = 2; i <= 100; i = i + 2) {
+            sum = sum + i;
+        }
+        // $("#sum").html(sum); 텍스트는 값만 넣어주고, html은 html을 넣어줌. 아래 빽틱``처럼 넣을 수 있음
+        // $("#sum").text(sum);
+        $("#sum").html(`<i>${sum}</i>`);
+    })
+
+    function sum() {
+        let sum = 0;
+        for (let i = 1; i <= 100; i++) {
+            sum = sum + i;
+        }
+        // alert는 팝업을 띄움
+        // alert('1~100 합계 = ' + sum)
+        // alert(`1~100합계 = ${sum}`);
+        let span_sum = document.getElementById("sum");
+        span_sum.innerHTML = sum;
+    }
+
+    // sum();
+
+
+
+    // 제이커리 라이브러리 - 자바스크립트를 편하게 쓸 수 있또록 하는 라이브러리.
+</script>
+
+</html>

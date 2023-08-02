@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도서검색</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="row">
+    <div class="col">
+        <h1 class="text-center">[ 도 서 검 색 ]</h1>
+    </div>
+
+</div>
+    
+<div id="div_book" class="row" mx-5></div>
+</body>
+<script id="temp_book" type="text/x-handlebars-template"></script>
+
+<script>
+    getList();
+function getList(){
+    $.ajax({
+        type:"get",
+        url:"https://dapi.kakao.com/v3/search/book?target=title",
+        dataType:"json",
+        data: { query: '자바', size: 12, page: 1 },
+        headers: { "Authorization": "KakaoAK f7bde974691ee613fd76f96b3b6d7aee" },
+        success: function(data){
+            console.log(data);
+
+            const temp_book=Handlebars.compile($("#temp_book").html());
+            const html_book=temp_book(data);
+            $("#div_book").html(html_book);
+        }
+    
+      
+    });
+}
+</script>
+
+
+</html>
+
+
+
